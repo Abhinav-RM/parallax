@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertigo &mdash; A Vertical Narrative Parallax Experience</title>
+
+  <!-- SEO Tags -->
+  <meta name="description"
+    content="Embark on a continuous parallax descent from the highest mountain ridge down to the glowing core of the planet, and out into the cosmic dark. Built with GSAP, ScrollTrigger, and Lenis.">
+  <meta name="keywords"
+    content="parallax, vertical narrative, web design, scrolltrigger, gsap, lenis scroll, mobile-first">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&family=Syncopate:wght@700&display=swap"
+    rel="stylesheet">
+
+  <!-- Lenis CSS for smooth scrolling -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background Glow for Desktop -->
+  <div class="desktop-bg-glow"></div>
+
+  <!-- Decorative Desktop Left Panel -->
+  <aside class="desktop-panel left-panel" aria-label="Project Information">
+    <div class="panel-inner">
+      <div class="brand">VERTIGO</div>
+      <div class="divider"></div>
+      <h1 class="project-title">A VERTICAL<br>NARRATIVE</h1>
+      <p class="project-desc">Embark on a continuous parallax descent from the highest mountain ridge down to the
+        glowing core of the planet, and out into the vastness of the cosmos.</p>
+
+      <nav class="zone-list" aria-label="Zone navigation">
+        <button class="zone-item active" data-zone="1">
+          <span class="zone-num">01</span>
+          <span class="zone-name">The Ridge</span>
+        </button>
+        <button class="zone-item" data-zone="2">
+          <span class="zone-num">02</span>
+          <span class="zone-name">The Substrate</span>
+        </button>
+        <button class="zone-item" data-zone="3">
+          <span class="zone-num">03</span>
+          <span class="zone-name">The Core</span>
+        </button>
+        <button class="zone-item" data-zone="4">
+          <span class="zone-num">04</span>
+          <span class="zone-name">The Overview</span>
+        </button>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Decorative Desktop Right Panel -->
+  <aside class="desktop-panel right-panel" aria-label="Controls and Stack">
+    <div class="panel-inner">
+      <div class="control-guide">
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+        <p class="guide-text">Use scroll wheel or swipe to explore the vertical depths.</p>
+      </div>
+
+      <div class="tech-stack">
+        <span>GSAP 3</span>
+        <span>ScrollTrigger</span>
+        <span>Lenis Smooth Scroll</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Phone Mockup Frame (Wrapper to style desktop viewport as phone frame) -->
+  <div class="phone-frame-container">
+    <!-- Viewport locked to mobile aspect ratio -->
+    <main class="viewport" id="main-viewport">
+
+      <!-- ZONE 1: THE RIDGE (0% to 25% Scroll) -->
+      <section class="zone" id="zone-1" aria-label="Zone 1: The Ridge">
+        <img src="images/sky.png" class="layer layer-sky" alt="Morning Sky" id="img-sky">
+        <img src="images/mountain.png" class="layer layer-mountain" alt="Distant Mountain Range" id="img-mountain">
+        <img src="images/birds.png" class="layer layer-birds" alt="Flock of Birds Flying" id="img-birds">
+        <img src="images/tree.png" class="layer layer-tree" alt="Ancient Oak Tree Outline" id="img-tree">
+        <!-- Particle Container for Rose Petals -->
+        <div class="layer petals-container" id="petals-container"></div>
+        <img src="images/deer.png" class="layer layer-deer" alt="Deer Standing on Ridge" id="img-deer">
+      </section>
+
+      <!-- ZONE 2: THE SUBSTRATE (25% to 50% Scroll) -->
+      <section class="zone" id="zone-2" aria-label="Zone 2: The Substrate">
+        <img src="images/soil.png" class="layer layer-soil" alt="Soil Layer and Earth Strata" id="img-soil">
+        <img src="images/root.png" class="layer layer-root" alt="Descending Tree Root System" id="img-root">
+      </section>
+
+      <!-- ZONE 3: THE CORE (50% to 75% Scroll) -->
+      <section class="zone" id="zone-3" aria-label="Zone 3: The Core">
+        <img src="images/magma.png" class="layer layer-magma" alt="Chamber of Glowing Molten Magma" id="img-magma">
+      </section>
+
+      <!-- ZONE 4: THE OVERVIEW (75% to 100% Scroll) -->
+      <section class="zone" id="zone-4" aria-label="Zone 4: The Overview">
+        <img src="images/star.png" class="layer layer-star" alt="Deep Cosmic Starry Sky" id="img-star">
+        <img src="images/earth.png" class="layer layer-earth" alt="Planet Earth floating in Space" id="img-earth">
+      </section>
+
+      <!-- Global Black Transition Overlay -->
+      <div class="black-overlay" id="black-overlay"></div>
+
+      <!-- TYPOGRAPHY OVERLAY -->
+      <div class="text-overlay">
+        <!-- Zone 1 - Step 1: Sky -->
+        <div class="text-card" id="text-zone-1-sky">
+          <h2 class="zone-title" style="--accent-color: #38bdf8;">THE CANOPY</h2>
+          <p class="zone-desc">A vast sapphire canvas stretching into the infinite, painted with the golden hues of the
+            early morning sun.</p>
+        </div>
+
+        <!-- Zone 1 - Step 2: Birds -->
+        <div class="text-card" id="text-zone-1-birds">
+          <h2 class="zone-title" style="--accent-color: #a7f3d0;">THE FLOCK</h2>
+          <p class="zone-desc">Wings catch the rising thermals as a flock of birds glides across the horizon, mapping
+            silent paths in the sky.</p>
+        </div>
+
+        <!-- Zone 1 - Step 3: Mountain -->
+        <div class="text-card" id="text-zone-1-mountain">
+          <h2 class="zone-title" style="--accent-color: #34d399;">THE PEAK</h2>
+          <p class="zone-desc">Ancient mountains rise as silent giants, their rugged silhouettes standing firm against
+            the passage of time.</p>
+        </div>
+
+        <!-- Zone 1 - Step 4: Tree -->
+        <div class="text-card" id="text-zone-1-tree">
+          <h2 class="zone-title" style="--accent-color: #059669;">THE GUARDIAN</h2>
+          <p class="zone-desc">An ancient oak tree spreads its branches wide, cradling the ridge and sheltering the life
+            that thrives below.</p>
+        </div>
+
+        <!-- Zone 1 - Step 5: Deer -->
+        <div class="text-card" id="text-zone-1-deer">
+          <h2 class="zone-title" style="--accent-color: #10b981;">THE WILDS</h2>
+          <p class="zone-desc">Standing in quiet grace, a lone deer watches the forest awaken under the gentle warmth of
+            the new day.</p>
+        </div>
+
+        <!-- Zone 2 Text -->
+        <div class="text-card" id="text-zone-2">
+          <h2 class="zone-title" style="--accent-color: #fbbf24;">THE SUBSTRATE</h2>
+          <p class="zone-desc">Descending beneath the surface into a labyrinth of rich, ancient soil, where massive root
+            systems weave the foundation of the forest above.</p>
+        </div>
+
+        <!-- Zone 3 Text -->
+        <div class="text-card" id="text-zone-3">
+          <h2 class="zone-title" style="--accent-color: #ef4444;">THE CORE</h2>
+          <p class="zone-desc">Deep within the heart of the planet, rivers of molten rock flow with pure, primordial
+            energy, pulsing with the heat of creation.</p>
+        </div>
+
+        <!-- Zone 4 Text -->
+        <div class="text-card" id="text-zone-4">
+          <h2 class="zone-title" style="--accent-color: #60a5fa;">THE OVERVIEW</h2>
+          <p class="zone-desc">Emerging into the silent vacuum of space, our fragile blue home floats like a precious
+            jewel suspended in the endless dark.</p>
+        </div>
+      </div>
+
+      <!-- Scroll Dots Progress Navigation inside Viewport (for Mobile/Desktop overlay interaction) -->
+      <nav class="viewport-dots" aria-label="Section navigation dots">
+        <button class="dot active" data-zone="1" aria-label="Scroll to The Ridge"></button>
+        <button class="dot" data-zone="2" aria-label="Scroll to The Substrate"></button>
+        <button class="dot" data-zone="3" aria-label="Scroll to The Core"></button>
+        <button class="dot" data-zone="4" aria-label="Scroll to The Overview"></button>
+      </nav>
+
+      <!-- Mobile Scroll Prompt indicator -->
+      <div class="scroll-prompt-container">
+        <span class="prompt-text">SCROLL</span>
+        <div class="prompt-arrow"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Virtual Scroll Container to drive the GSAP ScrollTrigger timeline (500vh) -->
+  <div class="scroll-container" id="scroll-container"></div>
+
+  <!-- Scripts -->
+  <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- GSAP ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Main Script -->
+  <script src="main.js"></script>
+</body>
+
+</html>
